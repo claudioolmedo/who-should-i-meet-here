@@ -1,9 +1,12 @@
 # Who Should I Meet Here?
 
-A conference networking agent backed by a **FalkorDB** graph.
+**Ask: "Who should I meet here — and why?" The graph answers — and shows its work.**
 
+A conference networking agent backed by a **FalkorDB** graph.
 Built at **Patch the Conference Hackathon** (Bright Data HQ, San Francisco,
 Oct 24, 2026) for the FalkorDB track.
+
+![The conference, as a graph — the highlighted path is why Priya Nair is recommended: You and Priya share the topic AI Agents.](graph.png)
 
 ## The problem
 
@@ -13,8 +16,6 @@ figure it out, the event is over.
 
 ## What it does
 
-You ask one question: **"Who should I meet here — and why?"**
-
 The agent ranks the other attendees by shared topics, using a multi-hop
 Cypher query over a graph of the conference — people, talks and topics:
 
@@ -23,10 +24,13 @@ Person -[:INTERESTED_IN]-> Topic <-[:INTERESTED_IN]- Person
 ```
 
 Every answer shows the **path through the graph** that produced it, so the
-recommendation is explainable, never a black box. And when you mark
-someone as met, the agent writes a `MET_WITH` edge back into the graph —
-**the graph is the agent's memory**, so the next answer moves on to
-someone new.
+recommendation is explainable, never a black box.
+
+![The answer: the top 5 people to meet, ranked by shared topics.](answer.png)
+
+And when you mark someone as met, the agent writes a `MET_WITH` edge back
+into the graph — **the graph is the agent's memory**, so the next answer
+moves on to someone new.
 
 ## How it works
 
